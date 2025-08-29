@@ -86,7 +86,7 @@
     /* NICK — anime từng ký tự */
     .nick{
       font-family:"Rampart One", system-ui, sans-serif;
-      font-size:54px; letter-spacing:.06em; line-height:1.05; margin-top:0;
+      font-size:32px; letter-spacing:.06em; line-height:1.05; margin-top:0;
       color:#fff;
       text-shadow:0 2px 12px rgba(0,0,0,.45);
       user-select:none;
@@ -130,6 +130,20 @@
       font-family:"Rubik Doodle Dots", cursive;
       text-shadow:0 1px 2px rgba(0,0,0,.45), 0 4px 12px rgba(0,0,0,.35);
       pointer-events:none;
+    }
+    .socials a .ico{
+      width:22px;height:22px;display:block;object-fit:contain;
+      border-radius:8px; box-shadow:0 0 0 1px rgba(255,255,255,.15) inset;
+    }
+
+    /* ép mọi màu → trắng tinh */
+    .socials a .ico.base{
+      filter: grayscale(1) saturate(0) brightness(0) invert(1) contrast(1.25);
+      transition: filter .2s ease, opacity .2s ease;
+    }
+    /* hover trả về màu vàng gốc */
+    .socials a:hover .ico.base{
+      filter: none;
     }
 
     /* Meta row + tooltips */
@@ -209,14 +223,17 @@
     <section class="center">
       <!-- đổi ảnh avatar sang img/avt.jpg -->
       <div class="avatar"><img id="avatarImg" src="img/avt.jpg" onerror="this.onerror=null;this.src='https://i.pravatar.cc/300?img=68'" alt="avatar"></div>
-      <div class="nick" id="nick">Noka</div>
-      <div class="tagline">luv ngoc nhi</div>
+      <div class="nick" id="nick">Lý Mỹ Hân</div>
+      <div class="tagline">mhancuteee</div>
 
       <div class="socials" aria-label="social links">
-        <a href="https://www.instagram.com/trannhu8982/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@nokapc.exe" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/tnk.54264/" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://discord.gg/9jGmpMh69u" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://www.instagram.com/mhn_yazzzz" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@mh.0911" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/myhan.ly.545" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://locket.camera/links/U6dN6N5qd7pKVspZA" aria-label="Locket" target="_blank" rel="noopener">
+          <img class="ico" src="https://ineqe.com/wp-content/uploads/2022/02/locket_app_icon-1024x1024.png" alt="">
+        </a>
+
       </div>
     </section>
 
@@ -225,13 +242,13 @@
       <article class="card" data-url="https://example.com/bai-1">
         <!-- Tự thử: a1.gif → a1.webp → a1.png → a1.jpg → a1.jpeg -->
         <img id="imgA1" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="card 1">
-        <div class="badge">serendipity</div>
+        <div class="badge">philophobia</div>
       </article>
 
       <article class="card" data-url="https://discord.gg/yourInvite">
         <!-- Tự thử: a2.gif → a2.webp → a2.png → a2.jpg → a2.jpeg -->
         <img id="imgA2" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="card 2">
-        <div class="badge">salad days</div>
+        <div class="badge">munashi</div>
       </article>
     </section>
 
@@ -248,8 +265,8 @@
       </span>
 
       <span class="loc tooltip" tabindex="0">
-        <i class="fa-solid fa-location-dot"></i><span> Gò Vấp</span>
-        <span class="tip">Location: Gò Vấp, TP.HCM</span>
+        <i class="fa-solid fa-location-dot"></i><span> Tân Bắc , Đài Loan</span>
+        <span class="tip">Location</span>
       </span>
     </div>
 
@@ -280,9 +297,9 @@
 <script>
 /* ===== GitHub config ===== */
 const GITHUB = {
-  token:"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", // ⚠️ Đừng commit token lên public repo
-  owner:"Noka204",
-  repo:"quanlykey",
+  token:"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", // ⚠️ Đừng commit token lên public repo
+  owner:"Mhanncte",
+  repo:"mhancte",
   filePath:"view.json",
   apiVersion:"2022-11-28"
 };
@@ -414,7 +431,7 @@ const muteBtn=document.getElementById('mute');
 const volEl=document.getElementById('vol');
 const muteIcon=muteBtn.querySelector('i');
 
-const TRACK={ name:'Hà Nội', url:'audio/nhac.mp3', fallback:'https://file-examples.com/storage/fe6f0b0fe6c0e0b7bdbd6a1/2017/11/file_example_MP3_700KB.mp3' };
+const TRACK={ name:'Ngồi nhìn em khóc', url:'audio/nhac.mp3', fallback:'https://file-examples.com/storage/fe6f0b0fe6c0e0b7bdbd6a1/2017/11/file_example_MP3_700KB.mp3' };
 
 function formatTime(s){if(!Number.isFinite(s))return'00:00';const m=Math.floor(s/60),ss=Math.floor(s%60);return`${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`}
 function setPlayIcon(p){playBtn.innerHTML=p?'<i class="fa-solid fa-pause"></i>':'<i class="fa-solid fa-play"></i>'}
